@@ -4,13 +4,16 @@
   "description": "Vertex AI is your plug-and-play AI model hub. Devs upload models, users plug into them via API. No red tape. Just clean, smart access.",
   "main": "server.js",
   "scripts": {
-  "dev": "nodemon app.js",
-  "test": "node app.js",
-  "start": "node app.js"
+    "dev": "nodemon app.js",
+    "test": "node app.js",
+    "start": "node app.js"
   },
   "author": "Arushi Gupta & Jayant Joshi",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0"
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2"
   }
 }
