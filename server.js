@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/user_routes');
+const aiModelRoutes = require('./routes/ai_model_routes');
 
 // Load environment variables
 dotenv.config();
@@ -26,6 +27,7 @@ mongoose.connect(MONGODB_URI)
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use('/api/models', aiModelRoutes);
 
 // Start the server
 app.listen(port, () => {
