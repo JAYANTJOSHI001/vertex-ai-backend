@@ -8,6 +8,7 @@ Vertex AI Backend is a platform that bridges the gap between AI model developers
 
 - User management (developers and consumers)
 - AI model uploading and management
+- API key generation and management
 - Model discovery and consumption
 - Usage tracking and monetization
 
@@ -25,6 +26,12 @@ Vertex AI Backend is a platform that bridges the gap between AI model developers
 - Set pricing models (free or pay-per-call)
 - Control model visibility (active, draft, suspended)
 - Generate unique API endpoints for each model
+
+### API Key Management
+- Generate secure API keys for model access
+- Track API usage per key
+- Revoke API keys when needed
+- Usage analytics for developers
 
 ### API Access
 - Secure API endpoints for model consumption
@@ -64,6 +71,16 @@ Vertex AI Backend is a platform that bridges the gap between AI model developers
 | DELETE | /api/models/:id | Delete a model | Required (owner) |
 | GET | /api/models/developer/my-models | Get developer's models | Required |
 | PATCH | /api/models/:id/status | Change model status | Required (owner) |
+
+### API Key Endpoints
+
+| Method | Endpoint | Description | Authentication |
+|--------|----------|-------------|----------------|
+| POST | /api/keys | Generate a new API key | Required |
+| GET | /api/keys/my-keys | Get user's API keys | Required |
+| GET | /api/keys/:id | Get API key details | Required |
+| PATCH | /api/keys/:id/revoke | Revoke an API key | Required (owner) |
+| GET | /api/keys/model/:model_id | Get keys for a model | Required (model owner) |
 
 ## Getting Started
 
@@ -123,6 +140,14 @@ Vertex AI Backend is a platform that bridges the gap between AI model developers
 - model_file_url : URL to hosted model file
 - status : Model status ('active', 'draft', 'suspended')
 - created_at : Upload date
+
+### API Key
+- user_id : Reference to User model (required)
+- model_id : Reference to AI Model (required)
+- api_key : Unique API key string (required)
+- usage_count : Number of API calls made
+- status : Key status ('active', 'revoked')
+- created_at : When the key was issued
 
 ## Authentication
 The API uses JWT (JSON Web Tokens) for authentication. To access protected endpoints:

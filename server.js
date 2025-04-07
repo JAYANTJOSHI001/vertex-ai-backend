@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/user_routes');
 const aiModelRoutes = require('./routes/ai_model_routes');
+const apiKeyRoutes = require('./routes/api_key_routes');
 
 // Load environment variables
 dotenv.config();
@@ -28,6 +29,7 @@ mongoose.connect(MONGODB_URI)
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/models', aiModelRoutes);
+app.use('/api/keys', apiKeyRoutes);
 
 // Start the server
 app.listen(port, () => {
