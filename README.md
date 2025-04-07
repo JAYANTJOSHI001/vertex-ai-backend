@@ -77,29 +77,29 @@ Vertex AI Backend is a platform that bridges the gap between AI model developers
 
 1. Clone the repository
     ```bash
-git clone https://github.com/yourusername/vertex-ai-backend.git
-cd vertex-ai-backend
+    git clone https://github.com/yourusername/vertex-ai-backend.git
+    cd vertex-ai-backend
     ```
 
 2. Install dependencies
     ```bash
-npm install
+    npm install
     ```
 
 3. Set up environment variables
     ```bash
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/vertex_ai
-JWT_SECRET=your_jwt_secret_key_here
+    PORT=5000
+    MONGODB_URI=mongodb://localhost:27017/vertex_ai
+    JWT_SECRET=your_jwt_secret_key_here
     ``` 
 
 4. Run the server
     ```bash
-npm start
+    npm start
     ```
 5. For Development
     ```bash
-npm run dev
+    npm run dev
     ```
 ## Data Models
 ### User Model
@@ -130,5 +130,5 @@ The API uses JWT (JSON Web Tokens) for authentication. To access protected endpo
 1. Register or login to get a token
 2. Include the token in the Authorization header of your requests:
     ```bash
-Authorization: Bearer your_token_here
+    Authorization: Bearer your_token_here
     ```
