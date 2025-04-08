@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const userRoutes = require('./routes/user_routes');
 const aiModelRoutes = require('./routes/ai_model_routes');
 const apiKeyRoutes = require('./routes/api_key_routes');
+const apiUsageRoutes = require('./routes/api_usage_routes');
 
 // Load environment variables
 dotenv.config();
@@ -30,6 +31,9 @@ mongoose.connect(MONGODB_URI)
 app.use('/api/users', userRoutes);
 app.use('/api/models', aiModelRoutes);
 app.use('/api/keys', apiKeyRoutes);
+
+// Use routes
+app.use('/api/usage', apiUsageRoutes);
 
 // Start the server
 app.listen(port, () => {

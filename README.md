@@ -33,6 +33,13 @@ Vertex AI Backend is a platform that bridges the gap between AI model developers
 - Revoke API keys when needed
 - Usage analytics for developers
 
+### Usage Analytics
+- Detailed usage logs for each API call
+- Performance metrics (response time, success rate)
+- Usage statistics by model and user
+- Daily and monthly usage trends
+- Developer dashboard with comprehensive analytics
+
 ### API Access
 - Secure API endpoints for model consumption
 - Usage tracking and rate limiting
@@ -81,6 +88,15 @@ Vertex AI Backend is a platform that bridges the gap between AI model developers
 | GET | /api/keys/:id | Get API key details | Required |
 | PATCH | /api/keys/:id/revoke | Revoke an API key | Required (owner) |
 | GET | /api/keys/model/:model_id | Get keys for a model | Required (model owner) |
+
+### Usage Analytics Endpoints
+
+| Method | Endpoint | Description | Authentication |
+|--------|----------|-------------|----------------|
+| GET | /api/usage/key/:id | Get logs for specific API key | Required (owner/developer) |
+| GET | /api/usage/model/:model_id | Get logs for specific model | Required (developer) |
+| GET | /api/usage/my-usage | Get user's usage across all keys | Required |
+| GET | /api/usage/developer/stats | Get developer statistics | Required (developer) |
 
 ## Getting Started
 
@@ -148,6 +164,14 @@ Vertex AI Backend is a platform that bridges the gap between AI model developers
 - usage_count : Number of API calls made
 - status : Key status ('active', 'revoked')
 - created_at : When the key was issued
+
+### API Usage Log
+- api_key_id : Reference to API Key (required)
+- model_id : Reference to AI Model (required)
+- input_summary : Sanitized input data summary
+- response_time_ms : Response time in milliseconds
+- status_code : HTTP status code of response
+- created_at : Timestamp of the API call
 
 ## Authentication
 The API uses JWT (JSON Web Tokens) for authentication. To access protected endpoints:
