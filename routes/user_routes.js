@@ -5,6 +5,7 @@ const { authenticate, isAdmin } = require('../middleware/auth_middleware');
 
 router.post('/register', userController.register);
 router.post('/login', userController.login);
+router.post('/forgot-password', userController.forgotPassword);
 
 router.get('/profile', authenticate, userController.getProfile);
 router.put('/profile', authenticate, userController.updateProfile);

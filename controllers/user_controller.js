@@ -130,6 +130,45 @@ exports.updateProfile = async (req, res) => {
   }
 };
 
+// Handle forgot password requests
+exports.forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    
+    if (!email) {
+      return res.status(400).json({ message: 'Email is required' });
+    }
+    
+    // Check if user exists
+    const user = await User.findOne({ email });
+    if (!user) {
+      // For security reasons, don't reveal if the email exists or not
+      return res.status(200).json({ 
+        message: 'If your email is registered, you will receive password reset instructions shortly' 
+      });
+    }
+    
+    // Generate a password reset token (valid for 1 hour)
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    user.reset_token = resetToken;
+    user.reset_token_expires = Date.now() + 3600000; // 1 hour
+    
+    await user.save();
+    
+    // In a real application, you would send an email with the reset link
+    // For now, we'll just log it to the console
+    console.log(`Password reset link: http://localhost:3000/reset-password?token=${resetToken}`);
+    
+    // Return success response
+    res.status(200).json({ 
+      message: 'If your email is registered, you will receive password reset instructions shortly' 
+    });
+    
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
 // Change password
 exports.changePassword = async (req, res) => {
   try {
