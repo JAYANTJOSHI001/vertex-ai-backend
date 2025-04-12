@@ -34,7 +34,6 @@ const apiKeySchema = new mongoose.Schema({
 // Add indexes for better query performance
 apiKeySchema.index({ user_id: 1 });
 apiKeySchema.index({ model_id: 1 });
-apiKeySchema.index({ api_key: 1 }, { unique: true });
 
 const APIKey = mongoose.model('APIKey', apiKeySchema);
 

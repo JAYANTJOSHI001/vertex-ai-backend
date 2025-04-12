@@ -18,7 +18,6 @@ const aiModelSchema = new mongoose.Schema({
   category: {
     type: String,
     maxlength: 100,
-    index: true
   },
   pricing_type: {
     type: String,

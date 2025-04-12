@@ -31,8 +31,6 @@ mongoose.connect(MONGODB_URI)
 app.use('/api/users', userRoutes);
 app.use('/api/models', aiModelRoutes);
 app.use('/api/keys', apiKeyRoutes);
-
-// Use routes
 app.use('/api/usage', apiUsageRoutes);
 
 // Start the server
